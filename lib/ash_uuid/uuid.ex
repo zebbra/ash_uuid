@@ -47,6 +47,9 @@ defmodule AshUUID.UUID do
   end
 
   @impl true
+  def cast_atomic(new_value, _constraints), do: {:atomic, new_value}
+
+  @impl true
   def dump_to_native(term, constraints),
     do: process(term, constraints[:prefix], constraints[:strict?], initial_format(term), :integer)
 
